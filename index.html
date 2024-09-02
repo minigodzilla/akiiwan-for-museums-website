@@ -86,7 +86,7 @@
             height: 100%;
             transform: translateX(25%);
             transition: transform 800ms ease;
-            box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.325);
+            /* box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.325); */
         }
 
         .slideshow .slide.active {
@@ -94,7 +94,7 @@
         }
 
         .slideshow .slide.passed {
-            transform: translateX(-110%);
+            transform: translateX(-100%);
 
         }
 
@@ -103,7 +103,6 @@
             margin: 1em;
             padding: 0.5em;
             background-color: #000;
-            box-shadow: .5em .5em #b72dbb;
         }
 
         .slideshow .slide-1 {
@@ -111,14 +110,34 @@
             z-index: 10;
         }
 
+        .slideshow .slide-1 .text {
+            box-shadow: .5em .5em #b72dbb;
+        }
+
         .slideshow .slide-2 {
             background-image: url("img/slide-2.jpg");
             z-index: 9;
         }
 
+        .slideshow .slide-2 .text {
+            text-align: center;
+            box-shadow: .5em .5em #58c560;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .slideshow .slide-2 .text-1 {
+            margin-top: 10em;
+            margin-bottom: 14em;
+        }
+
         .slideshow .slide-3 {
-            background: #0d7374;
+            background-image: url("img/slide-3.jpg");
             z-index: 8;
+        }
+
+        .slideshow .slide-3 .text {
+            box-shadow: .5em .5em #184897;
         }
 
         .controls {
@@ -135,6 +154,56 @@
             top: 0;
             width: 50%;
             height: 100%;
+        }
+
+        @keyframes btn-animation {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .controls .btn::after {
+            content: "";
+            position: absolute;
+            height: 25%;
+            width: 25%;
+            top: 50%;
+            opacity: 0;
+            transition: opacity 500ms ease;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: 25%;
+            animation-name: btn-animation;
+            animation-duration: 5s;
+            animation-timing-function: ease;
+        }
+
+        .controls .btn:hover::after {
+            opacity: 1;
+        }
+
+        .controls .btn-prev::after {
+            left: 0;
+            background-image: url("img/btn-prev.svg");
+        }
+
+        .controls .btn-next::after {
+            right: 0;
+            background-image: url("img/btn-next.svg");
         }
 
         .controls .btn-prev {
@@ -297,36 +366,6 @@
             form #status-message {
                 padding: 0 3em;
             }
-
-            .qr-panel {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background: rgba(0, 0, 0, 0.85);
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 500ms ease;
-            }
-
-            .qr-panel.qr-shown {
-                opacity: 1;
-                pointer-events: all;
-            }
-
-            .qr-panel #close-btn {
-                position: absolute;
-                top: 1.5em;
-                right: 1.5em;
-                width: 2em;
-            }
-
-            .qr-panel .qr {
-                display: block;
-                width: 76.5%;
-                margin: 10em auto 0 auto;
-            }
         }
 
         @media only screen and (min-width: 640px) {
@@ -340,32 +379,6 @@
 
             .container {
                 height: 44em;
-            }
-
-            header {
-                position: absolute;
-                width: 100%;
-                height: auto;
-                z-index: 1;
-            }
-
-            header #logo {
-                width: 25%;
-            }
-
-            .hero {
-                height: 37.5em;
-                margin-bottom: 0.5em;
-            }
-
-            .hero img,
-            .hero video {
-                height: 37.75em;
-            }
-
-            .hero img.mobile,
-            .hero video.mobile {
-                display: none;
             }
 
             .feedback {
@@ -401,21 +414,17 @@
             form #status-message {
                 margin-top: 1em;
             }
-
-            .qr-panel {
-                display: none;
-            }
         }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const carousels = document.querySelectorAll(".carousel");
+            const btnPrev = document.querySelector(".btn-prev");
+            const btnNext = document.querySelector(".btn-next");
             const form = document.querySelector("form");
             const emailInput = form.querySelector("#EMAIL");
             const hpInput = form.querySelector("#b_e7f83e702318920efe670e9b1_597f4b8abc");
             const allInputs = form.querySelectorAll("input");
             const statusMessage = form.querySelector("#status-message");
-            const qrPanel = document.querySelector(".qr-panel");
             let device; // device type, gets populated "mobile" or "desktop" by the resize handler
 
             // Checking for "confirmed" parameter when users confirm their email
@@ -462,22 +471,21 @@
             window.addEventListener("resize", debounce(resizeHandler, 100));
             resizeHandler();
 
-            // Video play/pause on tap or click
-            carousels.forEach(carousel => {
-                carousel.addEventListener("click", () => carousel.paused ? carousel.play() : carousel.pause());
-            });
-
             // event listeners for slide show
             document.querySelector(".btn-next").addEventListener("click", event => {
                 const activeSlide = document.querySelector(".active");
                 const nextSlide = activeSlide.nextElementSibling;
 
                 if (activeSlide && nextSlide && nextSlide.classList.contains("slide")) {
+                    btnPrev.classList.remove("disabled");
+                    btnNext.classList.remove("disabled");
                     activeSlide.classList.add("passed");
                     activeSlide.classList.remove("active");
                     nextSlide.classList.add("active");
                 }
-                // document.querySelector(".active").classList.add("passed").remove("active");
+                if (!nextSlide) {
+                    btnNext.classList.add("disabled");
+                }
             });
 
             document.querySelector(".btn-prev").addEventListener("click", event => {
@@ -485,11 +493,15 @@
                 const prevSlide = activeSlide.previousElementSibling;
 
                 if (activeSlide && prevSlide && prevSlide.classList.contains("slide")) {
+                    btnPrev.classList.remove("disabled");
+                    btnNext.classList.remove("disabled");
                     prevSlide.classList.remove("passed");
                     activeSlide.classList.remove("active");
                     prevSlide.classList.add("active");
                 }
-                // document.querySelector(".active").classList.add("passed").remove("active");
+                if (!prevSlide) {
+                    btnPrev.classList.add("disabled");
+                }
             });
 
             form.addEventListener("submit", event => {
@@ -579,8 +591,13 @@
                     Within museums, historical sites and other institutions around the world, Indigenous artifacts are all too often placed behind glass – creating a passive experience where the visitor can only see them.
                 </div>
             </div>
-            <div class="slide slide-2"></div>
-            <div class="slide slide-3"></div>
+            <div class="slide slide-2">
+                <div class="text text-1">Akiiwan for Museums aims to break these artifacts free from their glass confines, enabling visitors to interact with them in exciting new ways...</div>
+                <div class="text text-2">...reconnecting these artifacts to the communities that created them, and to the land where they were born.</div>
+            </div>
+            <div class="slide slide-3">
+                <div class="text text-1">With an attractive and easily repositionable dual-display kiosk including a touchscreen, visitors can virtually craft an object, making their own design and aesthetic choices, all while learning about the object's history.</div>
+            </div>
         </div>
         <div class="controls">
             <div class="btn btn-prev"></div>

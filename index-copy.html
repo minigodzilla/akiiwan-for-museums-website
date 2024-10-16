@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Buffalo Studios</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="description" content="Led by professionals who have worked for PlayStation, Ubisoft, Netflix and others, we make visually stunning games rooted in survival, stealth and crafting &ndash; all with an Indigenous-futurist twist.">
+    <meta name="keywords" content="indigenous, video, game, studio">
+    <meta name="author" content="Little Buffalo Studios">
+    <meta property="og:title" content="Little Buffalo Studios">
+    <meta property="og:site_name" content="Little Buffalo Studios">
+    <meta property="og:url" content="https://littlebuffalostudios.com" />
+    <meta property="og:description" content="Led by professionals who have worked for PlayStation, Ubisoft, Netflix and others, we make visually stunning games rooted in survival, stealth and crafting &ndash; all with an Indigenous-futurist twist.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://littlebuffalostudios.com/og-image.jpg">
+    <meta name="twitter:card" content="https://littlebuffalostudios.com/og-image.jpg">
+    <meta name="twitter:title" content="Little Buffalo Studios">
+    <meta name="twitter:description" content="Led by professionals who have worked for PlayStation, Ubisoft, Netflix and others, we make visually stunning games rooted in survival, stealth and crafting &ndash; all with an Indigenous-futurist twist.">
+    <meta name="twitter:image" content="https://littlebuffalostudios.com/og-image.jpg">
+    <style>
+        @font-face {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("fonts/montserrat-400.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url("fonts/montserrat-700.woff2") format("woff2");
+        }
+
+        :root {
+            font-size: 62.5%;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Montserrat, sans-serif;
+            line-height: 1.5;
+        }
+
+        body.mobile {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        p {
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            overflow: hidden;
+            min-width: 320px;
+            max-width: 2560px;
+        }
+
+        p.preview-text {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .slideshow {
+            position: absolute;
+            z-index: 1;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            font-size: 2em;
+        }
+
+        .slideshow .slide {
+            background-color: black;
+            background-position: 50% 50%;
+            background-size: cover;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: translateX(25%);
+            transition: transform 800ms ease;
+            /* box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.325); */
+        }
+
+        .slideshow .slide.active {
+            transform: translateX(0);
+        }
+
+        .slideshow .slide.passed {
+            transform: translateX(-100%);
+
+        }
+
+        .slideshow .slide .text {
+            width: 20em;
+            margin: 1em;
+            padding: 0.5em;
+            background-color: #000;
+        }
+
+        .slideshow .slide-1 {
+            background-image: url("img/slide-1.jpg");
+            z-index: 10;
+        }
+
+        .slideshow .slide-1 .text {
+            box-shadow: .5em .5em #b72dbb;
+        }
+
+        .slideshow .slide-2 {
+            background-image: url("img/slide-2.jpg");
+            z-index: 9;
+        }
+
+        .slideshow .slide-2 .text {
+            text-align: center;
+            box-shadow: .5em .5em #58c560;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .slideshow .slide-2 .text-1 {
+            margin-top: 10em;
+            margin-bottom: 14em;
+        }
+
+        .slideshow .slide-3 {
+            background-image: url("img/slide-3.jpg");
+            z-index: 8;
+        }
+
+        .slideshow .slide-3 .text {
+            box-shadow: .5em .5em #184897;
+        }
+
+        .controls {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .controls .btn {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+        }
+
+        @keyframes btn-animation {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .controls .btn::after {
+            content: "";
+            position: absolute;
+            height: 25%;
+            width: 25%;
+            top: 50%;
+            opacity: 0;
+            transition: opacity 500ms ease;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: 25%;
+            animation-name: btn-animation;
+            animation-duration: 5s;
+            animation-timing-function: ease;
+        }
+
+        .controls .btn:hover::after {
+            opacity: 1;
+        }
+
+        .controls .btn-prev::after {
+            left: 0;
+            background-image: url("img/btn-prev.svg");
+        }
+
+        .controls .btn-next::after {
+            right: 0;
+            background-image: url("img/btn-next.svg");
+        }
+
+        .controls .btn-prev {
+            left: 0;
+        }
+
+        .controls .btn-next {
+            right: 0;
+        }
+
+        .feedback {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .feedback::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            pointer-events: none;
+            background-color: #000;
+            transform: translateX(-25%);
+            transition: transform ease 1000ms;
+        }
+
+        .feedback::after {
+            transform: translateX(25%);
+        }
+
+        .feedback>p {
+            margin: 0 0 1.5em 0;
+            padding: 0 2em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .feedback>p em {
+            font-style: normal;
+            color: #fbb03b;
+        }
+
+        form {
+            display: flex;
+            position: relative;
+        }
+
+        form .field-shift {
+            position: absolute;
+            left: -9999px;
+        }
+
+        form input {
+            display: block;
+            box-sizing: border-box;
+            border: 0.15em solid;
+            font-family: Montserrat, sans-serif;
+            font-size: 1em;
+            line-height: 1.5;
+            text-align: center;
+            width: 18em;
+            padding: 0.4em;
+            transition: transform ease-out 50ms, opacity ease 250ms;
+        }
+
+        form input:focus {
+            outline: none;
+        }
+
+        form input[type="email"] {
+            background-color: transparent;
+            border-color: #fff;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        form input[type="email"]::placeholder {
+            font-weight: normal;
+            color: #aaa;
+        }
+
+        form input[type="submit"] {
+            display: block;
+            background-color: #fbb03b;
+            border-color: #fbb03b;
+            border-radius: 1.75em;
+            color: #000;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        form input[type="submit"]:active {
+            transform: scale(0.95);
+        }
+
+        form #status-message {
+            font-size: 0.80em;
+        }
+
+        form.submit-in-progress {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        form.submit-completed input {
+            opacity: 0;
+        }
+
+        form.submit-completed #status-message {
+            margin-top: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+
+        @media only screen and (max-width: 639px) {
+            body {
+                font-size: 2vw;
+            }
+
+            .slideshow {
+                font-size: 2em;
+            }
+
+            form.submit-completed #status-message {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .feedback {
+                flex-direction: column;
+            }
+
+            .feedback::after {
+                left: -100%;
+                right: -100%;
+                mask-image: linear-gradient(90deg, transparent 40%, black 60%);
+            }
+
+            form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            form input[type="email"] {
+                margin-bottom: 1.75em;
+            }
+
+            form input[type="submit"] {
+                margin-bottom: 1.5em;
+            }
+
+            form #status-message {
+                padding: 0 3em;
+            }
+        }
+
+        @media only screen and (min-width: 640px) {
+            .mobile-only {
+                display: none;
+            }
+
+            body {
+                font-size: 1.3vw;
+            }
+
+            .container {
+                height: 44em;
+            }
+
+            .feedback {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .feedback>p {
+                width: 21em;
+                margin-bottom: auto;
+            }
+
+            .feedback::after {
+                left: -50%;
+                right: -50%;
+                mask-image: linear-gradient(90deg, transparent 47.5%, black 52.5%);
+            }
+
+            form {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: flex-start;
+                width: 29em;
+                padding-top: 0.25em;
+            }
+
+            form input[type="submit"] {
+                width: 9em;
+                margin-left: auto;
+            }
+
+            form #status-message {
+                margin-top: 1em;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const btnPrev = document.querySelector(".btn-prev");
+            const btnNext = document.querySelector(".btn-next");
+            const form = document.querySelector("form");
+            const emailInput = form.querySelector("#EMAIL");
+            const hpInput = form.querySelector("#b_e7f83e702318920efe670e9b1_597f4b8abc");
+            const allInputs = form.querySelectorAll("input");
+            const statusMessage = form.querySelector("#status-message");
+            let device; // device type, gets populated "mobile" or "desktop" by the resize handler
+
+            // Checking for "confirmed" parameter when users confirm their email
+            // It runs once and then it's done, hence the IIFE
+            (() => {
+                // Get the URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+
+                // Check if the "?confirmed" parameter is present
+                if (urlParams.has("confirmed")) {
+                    form.className = "submit-completed";
+                    statusMessage.innerHTML = "Thanks for confirming your email and <nobr>75% launch discount!</nobr>";
+                }
+            })();
+
+            const resizeHandler = () => {
+                // Capture previous device type. When this runs for the first time it populates prevDevice as null.
+                const prevDevice = device;
+
+                // Check the current browser width and toggle the device type accordingly
+                device = window.innerWidth < 640 ? "mobile" : "desktop";
+
+                // If there's a change between previous and current device type
+                if (device !== prevDevice) {
+                    // Set the body class
+                    document.body.className = device;
+                };
+            };
+
+            // Debounce function
+            const debounce = (func, wait) => {
+                let timeout;
+                return (...args) => {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            };
+
+            // Using debounce with the resize handler
+            window.addEventListener("resize", debounce(resizeHandler, 100));
+            resizeHandler();
+
+            // event listeners for slide show
+            document.querySelector(".btn-next").addEventListener("click", event => {
+                const activeSlide = document.querySelector(".active");
+                const nextSlide = activeSlide.nextElementSibling;
+
+                if (activeSlide && nextSlide && nextSlide.classList.contains("slide")) {
+                    btnPrev.classList.remove("disabled");
+                    btnNext.classList.remove("disabled");
+                    activeSlide.classList.add("passed");
+                    activeSlide.classList.remove("active");
+                    nextSlide.classList.add("active");
+                }
+                if (!nextSlide) {
+                    btnNext.classList.add("disabled");
+                }
+            });
+
+            document.querySelector(".btn-prev").addEventListener("click", event => {
+                const activeSlide = document.querySelector(".active");
+                const prevSlide = activeSlide.previousElementSibling;
+
+                if (activeSlide && prevSlide && prevSlide.classList.contains("slide")) {
+                    btnPrev.classList.remove("disabled");
+                    btnNext.classList.remove("disabled");
+                    prevSlide.classList.remove("passed");
+                    activeSlide.classList.remove("active");
+                    prevSlide.classList.add("active");
+                }
+                if (!prevSlide) {
+                    btnPrev.classList.add("disabled");
+                }
+            });
+
+            form.addEventListener("submit", event => {
+                // Prevent default form submission
+                event.preventDefault();
+
+                // Validate email address
+                const emailValue = emailInput.value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // "Simple" email pattern
+
+                if (!emailRegex.test(emailValue)) {
+                    // If the email does not match the pattern, display an error message
+                    statusMessage.innerHTML = "Please enter a valid email address.";
+                    // Stop the form submission
+                    return;
+                }
+
+                // Get the Submit URL from the <form>
+                let url = form.getAttribute("action");
+
+                // This URL change makes MailChimp's post action output in JSON
+                url = url.replace("/post?u=", "/post-json?u=");
+
+                // This constructs the rest of the URL with the form inputs and values
+                // The added "c=displayMailChimpStatus" makes MailChimp output a JS call to displayMailChimpStatus() with an argument, formed as an object, containing the results
+                url += "&" + encodeURIComponent(emailInput.name) + "=" + encodeURIComponent(emailInput.value) + "&" + encodeURIComponent(hpInput.name) + "=" + encodeURIComponent(hpInput.value) + "&c=displayMailChimpStatus";
+
+                // Remove focus from any inputs
+                document.activeElement.blur();
+
+                // Disable all form inputs
+                allInputs.forEach(input => input.disabled = true);
+                form.className = "submit-in-progress";
+
+                // Inject a script with the output from the post action 
+                // i.e. If all goes well, the post action should output "displayMailChimpStatus({"result":"success","msg":"Thank you for subscribing!"})"
+                const script = window.document.createElement("script");
+                script.src = url;
+
+                // Insert script tag into the DOM (append to <head>)
+                const ref = window.document.getElementsByTagName("script")[0];
+                ref.parentNode.insertBefore(script, ref);
+
+                // After the script is loaded (and executed), remove it
+                script.onload = function () {
+                    this.remove();
+                };
+            });
+
+            // Process the form action output arguments from MailChimp
+            window.displayMailChimpStatus = (data) => {
+                // Make sure the data is in the right format
+                if (!data.result || !data.msg) return;
+
+                // Check if the message contains "thank you" (case insensitive)
+                const thankYouRegex = /thank you/i;
+                const containsThankYou = thankYouRegex.test(data.msg);
+
+                // Choose an appropriate action based on the presence of "thank you"
+                if (containsThankYou) {
+                    // Display a custom status message
+                    statusMessage.innerHTML = "To complete the subscription process, please click the confirmation link in the email we just sent.";
+                } else {
+                    // Output the raw endpoint status message
+                    statusMessage.innerHTML = data.msg;
+                }
+
+                // If successful, set the appropriate class to the form;
+                // otherwise, re-enable all form inputs and reset the form class
+                if (data.result === "success") {
+                    form.className = "submit-completed";
+                }
+                else {
+                    allInputs.forEach(input => input.disabled = false);
+                    form.className = "";
+                }
+            };
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slideshow">
+            <div class="slide slide-1 active">
+                <div class="text text-1">
+                    Within museums, historical sites and other institutions around the world, Indigenous artifacts are all too often placed behind glass – creating a passive experience where the visitor can only see them.
+                </div>
+            </div>
+            <div class="slide slide-2">
+                <div class="text text-1">Akiiwan for Museums aims to break these artifacts free from their glass confines, enabling visitors to interact with them in exciting new ways...</div>
+                <div class="text text-2">...reconnecting these artifacts to the communities that created them, and to the land where they were born.</div>
+            </div>
+            <div class="slide slide-3">
+                <div class="text text-1">With an attractive and easily repositionable dual-display kiosk including a touchscreen, visitors can virtually craft an object, making their own design and aesthetic choices, all while learning about the object's history.</div>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="btn btn-prev"></div>
+            <div class="btn btn-next"></div>
+        </div>
+        <div class="feedback">
+            <p>
+                <nobr>Be the first to know when we launch</nobr><br />
+                <nobr><em>plus</em> receive an exclusive</nobr><br class="mobile-only" />
+                <nobr>75% discount</nobr>
+            </p>
+            <form action="https://gmail.us21.list-manage.com/subscribe/post?u=e7f83e702318920efe670e9b1&amp;id=597f4b8abc&amp;f_id=0056f5e6f0" method="POST" novalidate>
+                <!-- real users should not fill this in and expect good things -->
+                <div class="field-shift" aria-label="Please leave the following field empty" aria-hidden="true">
+                    <input type="text" name="b_e7f83e702318920efe670e9b1_597f4b8abc" id="b_e7f83e702318920efe670e9b1_597f4b8abc" tabindex="-1" value="">
+                </div>
+                <input type="email" autocomplete="email" name="EMAIL" id="EMAIL" placeholder="Enter your email address" tabindex="0">
+                <input type="submit" name="submit" id="submit" value="Submit" tabindex="0">
+                <p id="status-message"></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

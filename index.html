@@ -23,23 +23,43 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <style>
         @font-face {
-            font-family: "Montserrat";
-            font-style: normal;
-            font-weight: 400;
             font-display: swap;
-            src: url("fonts/montserrat-400.woff2") format("woff2");
+            font-family: "JetBrains Mono";
+            font-weight: 200;
+            src: url("../assets/JetBrainsMono-200.woff2") format("woff2");
         }
 
         @font-face {
-            font-family: "Montserrat";
-            font-style: normal;
-            font-weight: 700;
             font-display: swap;
-            src: url("fonts/montserrat-700.woff2") format("woff2");
+            font-family: "JetBrains Mono";
+            font-weight: 400;
+            src: url("../assets/JetBrainsMono-400.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-display: swap;
+            font-family: "JetBrains Mono";
+            font-weight: 600;
+            src: url("../assets/JetBrainsMono-600.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-display: swap;
+            font-family: "JetBrains Mono";
+            font-weight: 800;
+            src: url("../assets/JetBrainsMono-800.woff2") format("woff2");
         }
 
         :root {
-            /* font-size: 62.5%; */
+            --bg-color: #000;
+            --text-color: #fff;
+            --red: #b72e33;
+            --purple: #75147c;
+            --teal: #28529f;
+            --blue: #28529f;
+            --green: #7ec970;
+            --yellow: #f7d943;
+            --brown: #81491e;
             -webkit-font-smoothing: antialiased;
             scroll-behavior: smooth;
         }
@@ -109,11 +129,17 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: Montserrat, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: "JetBrains Mono", monospace;
             font-size: clamp(1rem, 5vw, 2rem);
             line-height: 1.5;
+        }
+
+        button {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 0.2em 0.5em;
         }
 
         .swiper {
@@ -127,15 +153,86 @@
             padding: 1em 1.5em 1.5rem 1em;
         }
 
-        .slide-2 {
-            background-image: url("img/slide-1.jpg");
+        p {
+            background-color: var(--bg-color);
+            margin: 0 0 1em 0;
+            padding: 0.25em 0.5em;
         }
 
-        p {
-            background-color: black;
-            padding: 0.25em 0.5em;
-            box-shadow: .5em .5em #b72dbb;
+        .slide-1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
+
+        .slide-1 img {
+            width: 25%;
+            margin-bottom: 2em;
+        }
+
+        .slide-1 h1 {
+            margin-bottom: 1em;
+        }
+
+        .slide-2 {
+            background-image: url("img/slide-2.jpg");
+        }
+
+        .slide-2 p {
+            box-shadow: .5em .5em var(--red);
+        }
+
+        .slide-3 {
+            background-image: url("img/slide-3.jpg");
+        }
+
+        .slide-3 p {
+            box-shadow: .5em .5em var(--purple);
+        }
+
+        .slide-4 {
+            background-image: url("img/slide-4.jpg");
+        }
+
+        .slide-4 p {
+            box-shadow: .5em .5em var(--teal);
+        }
+
+        .slide-5 {
+            background-image: url("img/slide-5.jpg");
+        }
+
+        .slide-5 p {
+            box-shadow: .5em .5em var(--green);
+        }
+
+        .slide-6 {
+            background-image: url("img/slide-6.jpg");
+        }
+
+        .slide-6 p {
+            box-shadow: .5em .5em var(--yellow);
+        }
+
+        .slide-7 {
+            background-image: url("img/slide-7.jpg");
+        }
+
+        .slide-7 p {
+            box-shadow: .5em .5em var(--brown);
+        }
+
+        .slide-8 {
+            background-image: url("img/slide-8.jpg");
+        }
+
+        .slide-8 p {
+            box-shadow: .5em .5em var(--red);
+        }
+
+
 
         @media only screen and (min-width: 640px) {
             body {
@@ -145,6 +242,16 @@
             p {
                 width: 30em;
             }
+        }
+
+        /* swiper overrides */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #fff;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #fff;
         }
     </style>
     <script>
@@ -211,6 +318,7 @@
         <div class="swiper-wrapper">
             <!-- Slides -->
             <div class="swiper-slide slide-1" id="slide-1">
+                <img src="img/ufh.png" />
                 <h1>Akiiwan: The Museum Experience</h1>
                 <button id="btn-start">Start</button>
             </div>
@@ -233,8 +341,10 @@
                 <p>With each museum you visit, your collection grows as you rebuild the rich history of Indigenous peoples around the world, their artisanry, culture and remarkable technology.</p>
             </div>
             <div class="swiper-slide slide-8" id="slide-8">
-                <p>Interested in learning more about Akiiwan: The Museum Experience?</p>
-                <p>Why not contact us?</p>
+                <p>
+                    Interested in learning more about Akiiwan: The Museum Experience?<br />
+                    Why not contact us?
+                </p>
                 <button id="btn-feedback">Feedback Form</button>
             </div>
         </div>

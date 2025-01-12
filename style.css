@@ -1,0 +1,363 @@
+@font-face {
+    font-display: swap;
+    font-family: "JetBrains Mono";
+    font-weight: 200;
+    src: url("../assets/JetBrainsMono-200.woff2") format("woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "JetBrains Mono";
+    font-weight: 400;
+    src: url("../assets/JetBrainsMono-400.woff2") format("woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "JetBrains Mono";
+    font-weight: 600;
+    src: url("../assets/JetBrainsMono-600.woff2") format("woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "JetBrains Mono";
+    font-weight: 800;
+    src: url("../assets/JetBrainsMono-800.woff2") format("woff2");
+}
+
+:root {
+    --bg-color: #000;
+    --text-color: #fff;
+    --red: #b72e33;
+    --purple: #75147c;
+    --teal: #28529f;
+    --green: #7ec970;
+    --yellow: #f7d943;
+    --brown: #81491e;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+/* utility classes to fade in items in sequence */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+}
+
+.swiper-slide-seen .fade-in {
+    animation: fadeIn 1s forwards;
+}
+
+.swiper-slide-seen .fade-in-0 {
+    animation-delay: 0;
+}
+
+.swiper-slide-seen .fade-in-1 {
+    animation-delay: 0.5s;
+}
+
+.swiper-slide-seen .fade-in-2 {
+    animation-delay: 1s;
+}
+
+.swiper-slide-seen .fade-in-3 {
+    animation-delay: 1.5s;
+}
+
+.swiper-slide-seen .fade-in-4 {
+    animation-delay: 2s;
+}
+
+.swiper-slide-seen .fade-in-5 {
+    animation-delay: 2.5s;
+}
+
+/* Reset all margins, paddings, and borders */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set base font family */
+body {
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Ensure images and videos are scaled properly */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Remove default link styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Set form elements to inherit fonts */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    border: none;
+    background: none;
+    outline: none;
+    color: inherit;
+}
+
+/* Make buttons and interactive elements more accessible */
+button,
+[role="button"] {
+    cursor: pointer;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 2vw;
+    line-height: 1.5;
+}
+
+.container {
+    width: 100%;
+    height: 178vw;
+    font-size: 2em;
+}
+
+button {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 0.2em 0.5em;
+}
+
+.swiper {
+    height: 100%;
+    min-width: 320px;
+    background-color: var(--bg-color);
+}
+
+.swiper-slide {
+    background-position: 50% 50%;
+    background-size: cover;
+    padding: 1em 1.25em 1.25rem 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+p,
+li {
+    background-color: var(--bg-color);
+    margin: 0 0 1em 0;
+    padding: 0.25em 0.5em;
+}
+
+.bg {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.slide-1 {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.slide-1 img {
+    width: 25%;
+    margin-bottom: 2em;
+}
+
+.slide-1 h1 {
+    margin-bottom: 1em;
+}
+
+.slide-2 {
+    align-items: center;
+}
+
+.slide-2 .bg {
+    background-image: url("img/slide-2.jpg");
+}
+
+.slide-2 p {
+    box-shadow: .25em .25em var(--red);
+    margin-top: 6em;
+    text-align: center;
+    width: 20em;
+}
+
+.slide-3 {
+    background-image: url("img/kiosk-empty.jpg");
+    align-items: center;
+}
+
+.slide-3 .bg {
+    background-image: url("img/kiosk.jpg");
+}
+
+.slide-3 p {
+    box-shadow: .25em .25em var(--purple);
+}
+
+.slide-4 {
+    align-items: center;
+    background-image: url("img/ar-at-home-empty.jpg");}
+
+.slide-4 .bg {
+    background-image: url("img/ar-at-home.jpg");
+}
+
+.slide-4 p {
+    box-shadow: .25em .25em var(--teal);
+    margin-top: 33em;
+}
+
+.slide-5 {
+    background-image: url("img/kiosk-empty.jpg");
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-5 p,
+.slide-5 li {
+    box-shadow: .25em .25em var(--green);
+}
+
+.slide-5 p {
+    margin-bottom: 3em;
+}
+
+.slide-5 li {
+    padding-left: 1.5em;
+    position: relative;
+    opacity: 0;
+}
+
+.slide-5 li::before {
+    content: "-";
+    position: absolute;
+    left: 0.5em;
+}
+
+.slide-6 {
+    background-image: url("img/book-ui-1.jpg");
+    align-items: center;
+}
+
+.slide-6 .bg:nth-child(1) {
+    background-image: url("img/book-ui-2.jpg");
+}
+
+.slide-6 .bg:nth-child(2) {
+    background-image: url("img/book-ui-3.jpg");
+}
+
+.slide-6 p {
+    box-shadow: .25em .25em var(--yellow);
+    margin-top: 2em;
+}
+
+.slide-7 {
+    background-image: url("img/slide-7.jpg");
+}
+
+.slide-7 p {
+    box-shadow: .25em .25em var(--brown);
+}
+
+.slide-8 {
+    background-image: url("img/slide-8.jpg");
+}
+
+.slide-8 p {
+    box-shadow: .25em .25em var(--red);
+}
+
+@media only screen and (min-width: 640px) {
+    body {
+        font-size: 0.833333vw;
+        min-height: 56.25vw;
+    }
+
+    .container {
+        height: 56.25vw;
+    }
+
+    .slide-2 p {
+        width: auto;
+    }
+
+    .slide-4 {
+        align-items: flex-start;
+    }
+
+    .slide-4 p {
+        margin-top: 7em;
+        margin-left: 4em;
+    }
+
+    .slide-5 li {
+        max-width: 31em;
+    }
+}
+
+/* swiper overrides */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #fff;
+}

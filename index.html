@@ -4,355 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Little Buffalo Studios</title>
+    <title>Craftii</title>
     <link rel="icon" href="favicon.png" type="image/png">
-    <meta name="description" content="Led by professionals who have worked for PlayStation, Ubisoft, Netflix and others, we make visually stunning games rooted in survival, stealth and crafting &ndash; all with an Indigenous-futurist twist.">
-    <meta name="keywords" content="indigenous, video, game, studio">
-    <meta name="author" content="Little Buffalo Studios">
-    <meta property="og:title" content="Little Buffalo Studios">
-    <meta property="og:site_name" content="Little Buffalo Studios">
-    <meta property="og:url" content="https://littlebuffalostudios.com" />
-    <meta property="og:description" content="Led by professionals who have worked for PlayStation, Ubisoft, Netflix and others, we make visually stunning games rooted in survival, stealth and crafting &ndash; all with an Indigenous-futurist twist.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://littlebuffalostudios.com/og-image.jpg">
-    <meta name="twitter:card" content="https://littlebuffalostudios.com/og-image.jpg">
-    <meta name="twitter:title" content="Little Buffalo Studios">
-    <meta name="twitter:description" content="Led by professionals who have worked for PlayStation, Ubisoft, Netflix and others, we make visually stunning games rooted in survival, stealth and crafting &ndash; all with an Indigenous-futurist twist.">
-    <meta name="twitter:image" content="https://littlebuffalostudios.com/og-image.jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <style>
-        @font-face {
-            font-display: swap;
-            font-family: "JetBrains Mono";
-            font-weight: 200;
-            src: url("../assets/JetBrainsMono-200.woff2") format("woff2");
-        }
-
-        @font-face {
-            font-display: swap;
-            font-family: "JetBrains Mono";
-            font-weight: 400;
-            src: url("../assets/JetBrainsMono-400.woff2") format("woff2");
-        }
-
-        @font-face {
-            font-display: swap;
-            font-family: "JetBrains Mono";
-            font-weight: 600;
-            src: url("../assets/JetBrainsMono-600.woff2") format("woff2");
-        }
-
-        @font-face {
-            font-display: swap;
-            font-family: "JetBrains Mono";
-            font-weight: 800;
-            src: url("../assets/JetBrainsMono-800.woff2") format("woff2");
-        }
-
-        :root {
-            --bg-color: #000;
-            --text-color: #fff;
-            --red: #b72e33;
-            --purple: #75147c;
-            --teal: #28529f;
-            --blue: #28529f;
-            --green: #7ec970;
-            --yellow: #f7d943;
-            --brown: #81491e;
-            -webkit-font-smoothing: antialiased;
-            scroll-behavior: smooth;
-        }
-
-        /* Reset all margins, paddings, and borders */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Set base font family */
-        body {
-            font-family: system-ui, sans-serif;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
-
-        /* Ensure images and videos are scaled properly */
-        img,
-        picture,
-        video,
-        canvas,
-        svg {
-            display: block;
-            max-width: 100%;
-        }
-
-        /* Remove default list styles */
-        ul,
-        ol {
-            list-style: none;
-        }
-
-        /* Remove default link styles */
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Set form elements to inherit fonts */
-        input,
-        button,
-        textarea,
-        select {
-            font: inherit;
-            border: none;
-            background: none;
-            outline: none;
-            color: inherit;
-        }
-
-        /* Make buttons and interactive elements more accessible */
-        button,
-        [role="button"] {
-            cursor: pointer;
-        }
-
-
-        html,
-        body {
-            height: 100%;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: "JetBrains Mono", monospace;
-            font-size: clamp(1rem, 5vw, 2rem);
-            line-height: 1.5;
-        }
-
-        button {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            padding: 0.2em 0.5em;
-        }
-
-        .swiper {
-            height: 100%;
-            min-width: 320px;
-        }
-
-        .swiper-slide {
-            background-position: 50% 50%;
-            background-size: cover;
-            padding: 1em 1.5em 1.5rem 1em;
-        }
-
-        p {
-            background-color: var(--bg-color);
-            margin: 0 0 1em 0;
-            padding: 0.25em 0.5em;
-        }
-
-        .slide-1 {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .slide-1 img {
-            width: 25%;
-            margin-bottom: 2em;
-        }
-
-        .slide-1 h1 {
-            margin-bottom: 1em;
-        }
-
-        .slide-2 {
-            background-image: url("img/slide-2.jpg");
-        }
-
-        .slide-2 p {
-            box-shadow: .5em .5em var(--red);
-        }
-
-        .slide-3 {
-            background-image: url("img/slide-3.jpg");
-        }
-
-        .slide-3 p {
-            box-shadow: .5em .5em var(--purple);
-        }
-
-        .slide-4 {
-            background-image: url("img/slide-4.jpg");
-        }
-
-        .slide-4 p {
-            box-shadow: .5em .5em var(--teal);
-        }
-
-        .slide-5 {
-            background-image: url("img/slide-5.jpg");
-        }
-
-        .slide-5 p {
-            box-shadow: .5em .5em var(--green);
-        }
-
-        .slide-6 {
-            background-image: url("img/slide-6.jpg");
-        }
-
-        .slide-6 p {
-            box-shadow: .5em .5em var(--yellow);
-        }
-
-        .slide-7 {
-            background-image: url("img/slide-7.jpg");
-        }
-
-        .slide-7 p {
-            box-shadow: .5em .5em var(--brown);
-        }
-
-        .slide-8 {
-            background-image: url("img/slide-8.jpg");
-        }
-
-        .slide-8 p {
-            box-shadow: .5em .5em var(--red);
-        }
-
-
-
-        @media only screen and (min-width: 640px) {
-            body {
-                font-size: clamp(1rem, 2.5vw, 2rem);
-            }
-
-            p {
-                width: 30em;
-            }
-        }
-
-        /* swiper overrides */
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #fff;
-        }
-
-        .swiper-pagination-bullet-active {
-            background-color: #fff;
-        }
-    </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const swiper = new Swiper('.swiper', {
-                // Optional parameters
-                direction: 'horizontal',
-                loop: false,
-
-                // If we need pagination
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-
-                // Navigation arrows
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-
-                // And if we need scrollbar
-                scrollbar: {
-                    el: '.swiper-scrollbar',
-                },
-            });
-
-            // Immediately Invoked Function Expression to check for anchor link
-            (function () {
-                // Get the anchor link from the URL (hash)
-                const anchor = window.location.hash;
-
-                // If an anchor exists
-                if (anchor) {
-                    // Remove the '#' from the anchor link to get the slide ID
-                    const targetId = anchor.substring(1);
-
-                    // Find the slide with the matching ID
-                    const targetSlide = document.getElementById(targetId);
-
-                    // If the slide exists, get its index and use Swiper to slide to it
-                    if (targetSlide) {
-                        const targetIndex = Array.from(targetSlide.parentElement.children).indexOf(targetSlide);
-
-                        // Slide to the corresponding index
-                        swiper.slideTo(targetIndex);
-                    }
-                }
-            })();
-
-            const btnStart = document.querySelector("#btn-start");
-
-            btnStart.addEventListener("click", () => {
-                swiper.slideNext();
-            })
-        });
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 </head>
 
 <body>
-
-    <!-- Slider main container -->
-    <div class="swiper">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide slide-1" id="slide-1">
-                <img src="img/ufh.png" />
-                <h1>Akiiwan: The Museum Experience</h1>
-                <button id="btn-start">Start</button>
+    <div class="container">
+        <!-- Slider main container -->
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide slide-1" id="slide-1">
+                    <img src="img/ufh.png" class="fade-in fade-in-1" />
+                    <h1 class="fade-in fade-in-2">Craftii</h1>
+                    <button id="btn-start" class="fade-in fade-in-3">Start</button>
+                </div>
+                <div class="swiper-slide slide-2" id="slide-2">
+                    <div class="bg fade-in fade-in-0"></div>
+                    <p class="fade-in fade-in-1">What if Museum Artifacts didn't need to stay behind glass?</p>
+                </div>
+                <div class="swiper-slide slide-3" id="slide-3">
+                    <div class="bg fade-in fade-in-0"></div>
+                    <p class="fade-in fade-in-1">What if you could re-make them and re-design them with your own hands?</p>
+                </div>
+                <div class="swiper-slide slide-4" id="slide-4">
+                    <div class="bg fade-in fade-in-0"></div>
+                    <p class="fade-in fade-in-1">What if you could take them home?</p>
+                </div>
+                <div class="swiper-slide slide-5" id="slide-5">
+                    <div class="bg fade-in fade-in-0"></div>
+                    <p class="fade-in fade-in-1">Craftii is an interactive touch screen + mobile AR experience that:</p>
+                    <ul>
+                        <li class="fade-in fade-in-2">revitalizes museum collections</li>
+                        <li class="fade-in fade-in-3">attracts new and repeat visitors</li>
+                        <li class="fade-in fade-in-4">increases the impact of collections, without the expense of a major overhaul</li>
+                    </ul>
+                </div>
+                <div class="swiper-slide slide-6" id="slide-6">
+                    <div class="bg fade-in fade-in-2"></div>
+                    <div class="bg fade-in fade-in-5"></div>
+                    <p class="fade-in fade-in-1">Step 1: Touch Screen Crafting</p>
+                    <!-- <ul>
+                        <li>A simple, highly-scalable touch screen experience allows you to “re-make” the artifact in front of you</li>
+                    </ul> -->
+                </div>
+                <div class="swiper-slide slide-7" id="slide-7">
+                </div>
+                <div class="swiper-slide slide-8" id="slide-8">
+                    <button id="btn-feedback">Feedback Form</button>
+                </div>
             </div>
-            <div class="swiper-slide slide-2" id="slide-2">
-                <p>Within museums, historical sites and other institutions around the world, Indigenous artifacts are all too often placed behind glass – creating a passive experience where the visitor can only see them.</p>
-            </div>
-            <div class="swiper-slide slide-3" id="slide-3">
-                <p>Akiiwan for Museums aims to break these artifacts free from their glass confines, enabling visitors to interact with them in exciting new ways – reconnecting these artifacts to the communities that created them, and to the land where they were born.</p>
-            </div>
-            <div class="swiper-slide slide-4" id="slide-4">
-                <p>With an attractive and easily repositionable dual-display kiosk including a touchscreen, visitors can virtually craft an object, making their own design and aesthetic choices, all while learning about the object's history.</p>
-            </div>
-            <div class="swiper-slide slide-5" id="slide-5">
-                <p>They then get to take their custom creation home, in the form of a 3D augmented reality model, that they can continue to interact with, and learn from, using their own phone.</p>
-            </div>
-            <div class="swiper-slide slide-6" id="slide-6">
-                <p>These models become part of an interactive tabletop diorama that connects Indigenous artifacts, histories and traditions from across the country and around the world into a cohesive, one-of-a-kind experience, personalized for the visitor.</p>
-            </div>
-            <div class="swiper-slide slide-7" id="slide-7">
-                <p>With each museum you visit, your collection grows as you rebuild the rich history of Indigenous peoples around the world, their artisanry, culture and remarkable technology.</p>
-            </div>
-            <div class="swiper-slide slide-8" id="slide-8">
-                <p>
-                    Interested in learning more about Akiiwan: The Museum Experience?<br />
-                    Why not contact us?
-                </p>
-                <button id="btn-feedback">Feedback Form</button>
-            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
     </div>
-
+    <script src="script.js"></script>
 </body>
 
 </html>

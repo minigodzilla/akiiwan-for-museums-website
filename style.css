@@ -234,6 +234,7 @@ li {
     background-color: var(--bg-color);
     margin: 0 0 1em 0;
     padding: 0.25em 0.5em;
+    position: relative;
 }
 
 li {
@@ -249,7 +250,7 @@ li::before {
 
 .bg {
     position: absolute;
-    z-index: -1;
+    z-index: 0;
     top: 0;
     left: 0;
     width: 100%;
@@ -339,8 +340,7 @@ li::before {
     margin-top: 6em;
 }
 
-.slide-6 ul,
-.slide-7 ul {
+.slide-6 ul {
     margin-top: 22em;
 }
 
@@ -353,11 +353,17 @@ li::before {
     background-image: url("img/book-ui-4.jpg");
 }
 
-/* slide 8 - the same as slide 3 */
+.slide-7 p {
+    margin-top: 3em;
+}
 
 .slide-8 {
-    background-image: url("img/kiosk.jpg");
+    background-image: url("img/kiosk-empty.jpg");
     align-items: center;
+}
+
+.slide-8 .bg {
+    background-image: url("img/kiosk.jpg");
 }
 
 .slide-8 p {
@@ -370,7 +376,37 @@ li::before {
 }
 
 .slide-9 p {
-    margin-top: 26em;
+    margin-top: 9em;
+}
+
+.slide-9 ul {
+    margin-top: 15em;
+}
+
+.slide-10 {
+    align-items: center;
+    background-image: url("img/ar-at-home-empty.jpg");
+}
+
+.slide-10 .bg {
+    background-image: url("img/ar-at-home.jpg");
+}
+
+.slide-10 p {
+    margin-top: 33em;
+}
+
+.slide-11 {
+    align-items: center;
+    background-image: url("img/diorama-empty.jpg");
+}
+
+.slide-11 .bg {
+    background-image: url("img/diorama.jpg");
+}
+
+.slide-11 p {
+    margin-top: 33em;
 }
 
 @media only screen and (min-width: 640px) {
@@ -409,13 +445,11 @@ li::before {
         margin-top: 2em;
     }
 
-    .slide-6 ul,
-    .slide-7 ul {
+    .slide-6 ul {
         margin-top: 21em;
     }
 
-    .slide-6 li,
-    .slide-7 li {
+    .slide-6 li {
         max-width: 40em;
     }
 
@@ -428,6 +462,15 @@ li::before {
         margin-top: 20em;
         max-width: 38em;
     }
+
+    .slide-10 p {
+        margin-top: 26em;
+    }
+
+    .slide-11 p {
+        margin-top: 26em;
+    }
+
 }
 
 /* swiper overrides */

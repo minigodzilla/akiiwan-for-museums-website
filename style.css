@@ -295,6 +295,10 @@ li::before {
     background-image: url("img/kiosk.jpg");
 }
 
+.slide-3 p {
+    margin-top: 6em;
+}
+
 .slide-4 {
     align-items: center;
     background-image: url("img/ar-at-home-empty.jpg");}
@@ -330,20 +334,43 @@ li::before {
     background-image: url("img/book-ui-3.jpg");
 }
 
-.slide-6 p {
+.slide-6 p,
+.slide-7 p {
     margin-top: 6em;
 }
 
-.slide-6 ul {
+.slide-6 ul,
+.slide-7 ul {
     margin-top: 22em;
 }
 
 .slide-7 {
-    background-image: url("img/slide-7.jpg");
+    background-image: url("img/book-ui-3.jpg");
+    align-items: center;
 }
 
+.slide-7 .bg {
+    background-image: url("img/book-ui-4.jpg");
+}
+
+/* slide 8 - the same as slide 3 */
+
 .slide-8 {
-    background-image: url("img/slide-8.jpg");
+    background-image: url("img/kiosk.jpg");
+    align-items: center;
+}
+
+.slide-8 p {
+    margin-top: 4em;
+}
+
+.slide-9 {
+    background-image: url("img/kiosk-qr.jpg");
+    align-items: center;
+}
+
+.slide-9 p {
+    margin-top: 26em;
 }
 
 @media only screen and (min-width: 640px) {
@@ -360,6 +387,10 @@ li::before {
         width: auto;
     }
 
+    .slide-3 p {
+        margin-top: 2em;
+    }
+
     .slide-4 {
         align-items: flex-start;
     }
@@ -373,16 +404,29 @@ li::before {
         max-width: 31em;
     }
 
-    .slide-6 p {
+    .slide-6 p,
+    .slide-7 p {
         margin-top: 2em;
     }
 
-    .slide-6 ul {
+    .slide-6 ul,
+    .slide-7 ul {
         margin-top: 21em;
     }
 
-    .slide-6 li {
+    .slide-6 li,
+    .slide-7 li {
         max-width: 40em;
+    }
+
+    .slide-8 p {
+        margin-top: 1.5em;
+        max-width: 38em;
+    }
+
+    .slide-9 p {
+        margin-top: 20em;
+        max-width: 38em;
     }
 }
 

@@ -28,12 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
       slideChangeTransitionEnd: (e) => {
         const activeSlide = e.slides[e.activeIndex];
         activeSlide.classList.add('swiper-slide-seen');
+        window.location.hash = activeSlide.id;
+        window.history.replaceState(null, null, window.location.hash);
       },
     },
   });
 
-  // Immediately Invoked Function Expression to check for anchor link
-  (function () {
+  // function to check for anchor link and, if exists, slide to it
+
+  function slideToAnchor() {
     // Get the anchor link from the URL (hash)
     const anchor = window.location.hash;
 
@@ -53,7 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
         swiper.slideTo(targetIndex);
       }
     }
-  })();
+  }
+
+  // Call the function
+  slideToAnchor();
+
+  // call the function on hash change
+  window.addEventListener('hashchange', slideToAnchor);
 
   const btnStart = document.querySelector('#btn-start');
 

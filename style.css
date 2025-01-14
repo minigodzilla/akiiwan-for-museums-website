@@ -83,6 +83,46 @@
     animation-delay: 2.5s;
 }
 
+.swiper-slide-seen .fade-in-6 {
+    animation-delay: 3s;
+}
+
+.swiper-slide-seen .fade-in-7 {
+    animation-delay: 3.5s;
+}
+
+/* shadow classes */
+
+.shadow-red p, 
+.shadow-red li {
+    box-shadow: .25em .25em var(--red);
+}
+
+.shadow-purple p,
+.shadow-purple li {
+    box-shadow: .25em .25em var(--purple);
+}
+
+.shadow-teal p,
+.shadow-teal li {
+    box-shadow: .25em .25em var(--teal);
+}
+
+.shadow-green p,
+.shadow-green li {
+    box-shadow: .25em .25em var(--green);
+}
+
+.shadow-yellow p,
+.shadow-yellow li {
+    box-shadow: .25em .25em var(--yellow);
+}
+
+.shadow-brown p,
+.shadow-brown li {
+    box-shadow: .25em .25em var(--brown);
+}
+
 /* Reset all margins, paddings, and borders */
 * {
     margin: 0;
@@ -196,6 +236,17 @@ li {
     padding: 0.25em 0.5em;
 }
 
+li {
+    padding-left: 1.5em;
+    position: relative;
+}
+
+li::before {
+    content: "-";
+    position: absolute;
+    left: 0.5em;
+}
+
 .bg {
     position: absolute;
     z-index: -1;
@@ -231,9 +282,7 @@ li {
 }
 
 .slide-2 p {
-    box-shadow: .25em .25em var(--red);
     margin-top: 6em;
-    text-align: center;
     width: 20em;
 }
 
@@ -246,10 +295,6 @@ li {
     background-image: url("img/kiosk.jpg");
 }
 
-.slide-3 p {
-    box-shadow: .25em .25em var(--purple);
-}
-
 .slide-4 {
     align-items: center;
     background-image: url("img/ar-at-home-empty.jpg");}
@@ -259,7 +304,6 @@ li {
 }
 
 .slide-4 p {
-    box-shadow: .25em .25em var(--teal);
     margin-top: 33em;
 }
 
@@ -269,25 +313,8 @@ li {
     justify-content: center;
 }
 
-.slide-5 p,
-.slide-5 li {
-    box-shadow: .25em .25em var(--green);
-}
-
 .slide-5 p {
     margin-bottom: 3em;
-}
-
-.slide-5 li {
-    padding-left: 1.5em;
-    position: relative;
-    opacity: 0;
-}
-
-.slide-5 li::before {
-    content: "-";
-    position: absolute;
-    left: 0.5em;
 }
 
 .slide-6 {
@@ -304,24 +331,19 @@ li {
 }
 
 .slide-6 p {
-    box-shadow: .25em .25em var(--yellow);
-    margin-top: 2em;
+    margin-top: 6em;
+}
+
+.slide-6 ul {
+    margin-top: 22em;
 }
 
 .slide-7 {
     background-image: url("img/slide-7.jpg");
 }
 
-.slide-7 p {
-    box-shadow: .25em .25em var(--brown);
-}
-
 .slide-8 {
     background-image: url("img/slide-8.jpg");
-}
-
-.slide-8 p {
-    box-shadow: .25em .25em var(--red);
 }
 
 @media only screen and (min-width: 640px) {
@@ -349,6 +371,18 @@ li {
 
     .slide-5 li {
         max-width: 31em;
+    }
+
+    .slide-6 p {
+        margin-top: 2em;
+    }
+
+    .slide-6 ul {
+        margin-top: 21em;
+    }
+
+    .slide-6 li {
+        max-width: 40em;
     }
 }
 

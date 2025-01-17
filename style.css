@@ -399,8 +399,17 @@ li::before {
     margin-top: 33em;
 }
 
-.slide-12 p {
-    margin-top: 33em;
+.slide-12 {
+    background-image: url('img/collection-mobile.jpg');
+    justify-content: center;
+}
+
+.slide-13 {
+    background-image: url('img/wider-vision-mobile.jpg');
+}
+
+.slide-13 p {
+    margin-top: 30em;
 }
 
 .slide-14 {
@@ -465,13 +474,13 @@ li::before {
     }
 
     .slide-7 p {
-        margin-top: 2em;
-        width: 32.25em;
+        margin-top: 1em;
+        width: 33em;
     }
 
     .slide-8 p {
         margin-top: 1.5em;
-        max-width: 38em;
+        max-width: 38.5em;
     }
 
     .slide-9 p {
@@ -495,9 +504,20 @@ li::before {
         margin-top: 26em;
     }
 
+    .slide-12 {
+        background-image: url('img/collection-desktop.jpg');
+    }
+
     .slide-12 p {
-        margin-top: 24em;
-        width: 38.25em;
+        width: 39em;
+    }
+
+    .slide-13 {
+        background-image: url('img/wider-vision-desktop.jpg');
+    }
+
+    .slide-13 p {
+        margin-top: 26em;
     }
 }
 

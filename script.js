@@ -1,72 +1,81 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'horizontal',
-    loop: false,
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: false,
 
-    // If we need pagination
-    pagination: {
-      el: '.swiper-pagination',
-    },
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
 
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
 
-    // And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
+        // And if we need scrollbar
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
 
-    on: {
-      afterInit: (e) => {
-        const activeSlide = e.slides[e.activeIndex];
-        activeSlide.classList.add('swiper-slide-seen');
-      },
-      slideChangeTransitionEnd: (e) => {
-        const activeSlide = e.slides[e.activeIndex];
-        activeSlide.classList.add('swiper-slide-seen');
-        window.location.hash = activeSlide.id;
-        window.history.replaceState(null, null, window.location.hash);
-      },
-    },
-  });
+        on: {
+            afterInit: (e) => {
+                const activeSlide = e.slides[e.activeIndex];
+                activeSlide.classList.add('swiper-slide-seen');
+            },
+            slideChangeTransitionEnd: (e) => {
+                const activeSlide = e.slides[e.activeIndex];
+                activeSlide.classList.add('swiper-slide-seen');
+                window.location.hash = activeSlide.id;
+                window.history.replaceState(null, null, window.location.hash);
+            },
+        },
+    });
 
-  // function to check for anchor link and, if exists, slide to it
+    // map left/right arrow keys to prev/next slide
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            swiper.slidePrev();
+        } else if (e.key === 'ArrowRight') {
+            swiper.slideNext();
+        }
+    });
 
-  function slideToAnchor() {
-    // Get the anchor link from the URL (hash)
-    const anchor = window.location.hash;
+    // function to check for anchor link and, if exists, slide to it
 
-    // If an anchor exists
-    if (anchor) {
-      // Remove the '#' from the anchor link to get the slide ID
-      const targetId = anchor.substring(1);
+    function slideToAnchor() {
+        // Get the anchor link from the URL (hash)
+        const anchor = window.location.hash;
 
-      // Find the slide with the matching ID
-      const targetSlide = document.getElementById(targetId);
+        // If an anchor exists
+        if (anchor) {
+            // Remove the '#' from the anchor link to get the slide ID
+            const targetId = anchor.substring(1);
 
-      // If the slide exists, get its index and use Swiper to slide to it
-      if (targetSlide) {
-        const targetIndex = Array.from(targetSlide.parentElement.children).indexOf(targetSlide);
+            // Find the slide with the matching ID
+            const targetSlide = document.getElementById(targetId);
 
-        // Slide to the corresponding index
-        swiper.slideTo(targetIndex);
-      }
+            // If the slide exists, get its index and use Swiper to slide to it
+            if (targetSlide) {
+                const targetIndex = Array.from(targetSlide.parentElement.children).indexOf(targetSlide);
+
+                // Slide to the corresponding index
+                swiper.slideTo(targetIndex);
+            }
+        }
     }
-  }
 
-  // Call the function
-  slideToAnchor();
+    // Call the function
+    slideToAnchor();
 
-  // call the function on hash change
-  window.addEventListener('hashchange', slideToAnchor);
+    // call the function on hash change
+    window.addEventListener('hashchange', slideToAnchor);
 
-  const btnStart = document.querySelector('#btn-start');
+    const btnStart = document.querySelector('#btn-start');
 
-  btnStart.addEventListener('click', () => {
-    swiper.slideNext();
-  });
+    btnStart.addEventListener('click', () => {
+        swiper.slideNext();
+    });
 });

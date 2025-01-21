@@ -105,7 +105,8 @@
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
-        <button class="btn" id="btn-feedback">Feedback?</button>
+        <button id="btn-feedback" class="btn-feedback">Feedback?</button>
+        <div id="form-backdrop" class="form-backdrop"></div>
         <div id="form-feedback" class="form-feedback">
             <button id="btn-close"></button>
             <form>
@@ -117,6 +118,7 @@
                 <label for="message">Message</label>
                 <textarea id="message" name="message" required></textarea>
                 <button type="submit">Submit</button>
+                <div id="status-message">Please enter a valid e-mail address.</div>
             </form>
         </div>
     </div>

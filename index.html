@@ -105,6 +105,20 @@
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
+        <button class="btn" id="btn-feedback">Feedback?</button>
+        <div id="form-feedback" class="form-feedback">
+            <button id="btn-close"></button>
+            <form>
+                <h2>Feedback Form</h2>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

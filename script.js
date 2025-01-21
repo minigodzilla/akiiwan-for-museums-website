@@ -30,8 +30,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 activeSlide.classList.add('swiper-slide-seen');
                 window.location.hash = activeSlide.id;
                 window.history.replaceState(null, null, window.location.hash);
+
+                // if the current slide is slide 5 or later, add an "active" class to the feeedback button (#btn-feedback)
+                const btnFeedback = document.querySelector('#btn-feedback');
+                if (e.activeIndex >= 4) {
+                    btnFeedback.classList.add('active');
+                } else {
+                    btnFeedback.classList.remove('active');
+                }
             },
         },
+    });
+
+    // event listener to add "active" class to the feedback form (#form-feedback) when clicked
+
+    const btnFeedback = document.querySelector('#btn-feedback');
+    const formFeedback = document.querySelector('#form-feedback');
+
+    btnFeedback.addEventListener('click', () => {
+        formFeedback.classList.add('active');
+    });
+
+    // event listener to remove "active" class from the feedback form (#form-feedback) when close button (#btn-close) is clicked
+
+    const btnClose = document.querySelector('#btn-close');
+
+    btnClose.addEventListener('click', () => {
+        formFeedback.classList.remove('active');
     });
 
     // map left/right arrow keys to prev/next slide

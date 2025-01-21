@@ -6,39 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let feedbackFormOpen = false;
 
     const swiper = new Swiper('.swiper', {
-        // Optional parameters
         direction: 'horizontal',
         loop: false,
-
-        // If we need pagination
-        pagination: {
-            el: '.swiper-pagination',
-        },
-
-        // Navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-        // And if we need scrollbar
-        scrollbar: {
-            el: '.swiper-scrollbar',
-        },
-
+        pagination: { el: '.swiper-pagination' },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         on: {
-            afterInit: (e) => {
-                const activeSlide = e.slides[e.activeIndex];
-                activeSlide.classList.add('swiper-slide-seen');
-            },
-            slideChangeTransitionStart: (e) => {
-                e.activeIndex >= 4 ? feedbackBtn.classList.add('active') : feedbackBtn.classList.remove('active');
-            },
+            afterInit: (e) => e.slides[e.activeIndex].classList.add('swiper-slide-seen'),
+            slideChangeTransitionStart: (e) => feedbackBtn.classList.toggle('active', e.activeIndex >= 4),
             slideChangeTransitionEnd: (e) => {
                 const activeSlide = e.slides[e.activeIndex];
                 activeSlide.classList.add('swiper-slide-seen');
-                window.location.hash = activeSlide.id;
-                window.history.replaceState(null, null, window.location.hash);
+                // window.location.hash = activeSlide.id;
+                // const hash = `#${activeSlide.id}`;
+                // if (window.location.hash !== hash) window.history.replaceState(null, null, hash);
             },
         },
     });
@@ -46,68 +26,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // map left/right arrow keys to prev/next slide
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            swiper.slidePrev();
-        } else if (e.key === 'ArrowRight') {
-            swiper.slideNext();
-        }
+        if (e.key === 'ArrowLeft') swiper.slidePrev();
+        if (e.key === 'ArrowRight') swiper.slideNext();
     });
 
     // feedback form UI
 
-    const feedbackFormHandler = () => {
+    const feedbackFormHandler = (isOpen) => {
+        feedbackFormOpen = isOpen;
         feedbackFormOpen ? feedbackForm.classList.add('active') : feedbackForm.classList.remove('active');
         feedbackFormOpen ? formBackdrop.classList.add('active') : formBackdrop.classList.remove('active');
+
+        if (feedbackFormOpen) {
+            // after a timeout of 500ms, focus on the first input
+            setTimeout(() => feedbackForm.querySelector('#name').focus(), 500);
+        } else {
+            document.activeElement.blur();
+        }
     };
 
-    feedbackBtn.addEventListener('click', () => {
-        feedbackFormOpen = true;
-        feedbackFormHandler();
-    });
-
-    formBackdrop.addEventListener('click', () => {
-        feedbackFormOpen = false;
-        feedbackFormHandler();
-    });
-
-    feedbackCloseBtn.addEventListener('click', () => {
-        feedbackFormOpen = false;
-        feedbackFormHandler();
-    });
+    feedbackBtn.addEventListener('click', () => feedbackFormHandler(true));
+    formBackdrop.addEventListener('click', () => feedbackFormHandler(false));
+    feedbackCloseBtn.addEventListener('click', () => feedbackFormHandler(false));
 
     // function to check for anchor link and, if exists, slide to it
 
-    function slideToAnchor() {
-        // Get the anchor link from the URL (hash)
-        const anchor = window.location.hash;
-
-        // If an anchor exists
+    const slideToAnchor = () => {
+        const anchor = window.location.hash.slice(1); // Remove '#'
         if (anchor) {
-            // Remove the '#' from the anchor link to get the slide ID
-            const targetId = anchor.substring(1);
-
-            // Find the slide with the matching ID
-            const targetSlide = document.getElementById(targetId);
-
-            // If the slide exists, get its index and use Swiper to slide to it
+            const targetSlide = document.getElementById(anchor);
             if (targetSlide) {
                 const targetIndex = Array.from(targetSlide.parentElement.children).indexOf(targetSlide);
-
-                // Slide to the corresponding index
                 swiper.slideTo(targetIndex);
             }
         }
-    }
+    };
 
-    // Call the function
-    slideToAnchor();
+    // slideToAnchor();
 
-    // call the function on hash change
-    window.addEventListener('hashchange', slideToAnchor);
+    // window.addEventListener('hashchange', slideToAnchor);
 
-    const btnStart = document.querySelector('#btn-start');
-
-    btnStart.addEventListener('click', () => {
-        swiper.slideNext();
-    });
+    document.querySelector('#btn-start').addEventListener('click', () => swiper.slideNext());
 });

@@ -231,6 +231,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 ul {
@@ -269,15 +270,18 @@ li::before {
     background-size: cover;
 }
 
-.slide-1 {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.slide-1 .logos {
+    margin-bottom: 2em;
+    display: flex;
+    gap: 1em;
+    padding-left: 1.5em;
 }
 
-.slide-1 img {
-    width: 25%;
-    margin-bottom: 2em;
+.slide-1 .logos img {
+    width: auto;
+    height: 5em;
+    object-fit: contain;
+    margin-right: 1em;
 }
 
 .slide-1 h1 {
@@ -289,7 +293,7 @@ li::before {
 }
 
 .slide-2 p {
-    margin-top: 6em;
+    margin-bottom: 20em;
     width: 20em;
 }
 
@@ -302,7 +306,7 @@ li::before {
 }
 
 .slide-3 p {
-    margin-top: 6em;
+    margin-bottom: 25em;
 }
 
 .slide-4 {
@@ -314,12 +318,11 @@ li::before {
 }
 
 .slide-4 p {
-    margin-top: 33em;
+    margin-bottom: 21em;
 }
 
 .slide-5 {
     background-image: url('img/kiosk-empty.jpg');
-    justify-content: center;
 }
 
 .slide-5 p {
@@ -338,13 +341,12 @@ li::before {
     background-image: url('img/book-ui-3.jpg');
 }
 
-.slide-6 p,
-.slide-7 p {
-    margin-top: 6em;
+.slide-6 p {
+    margin-top: 3em;
 }
 
 .slide-6 ul {
-    margin-top: 22em;
+    margin-top: 18em;
 }
 
 .slide-7 {
@@ -356,7 +358,7 @@ li::before {
 }
 
 .slide-7 p {
-    margin-top: 3em;
+    margin-bottom: 25em;
     width: 20em;
 }
 
@@ -369,19 +371,16 @@ li::before {
 }
 
 .slide-8 p {
-    margin-top: 4em;
+    margin-bottom: 26em;
 }
 
 .slide-9 {
     background-image: url('img/kiosk-qr.jpg');
 }
 
-.slide-9 p {
-    margin-top: 9em;
-}
-
 .slide-9 ul {
     margin-top: 15em;
+    margin-bottom: 1em;
 }
 
 .slide-10 {
@@ -393,7 +392,7 @@ li::before {
 }
 
 .slide-10 p {
-    margin-top: 33em;
+    margin-top: 26em;
 }
 
 .slide-11 {
@@ -405,12 +404,11 @@ li::before {
 }
 
 .slide-11 p {
-    margin-top: 33em;
+    margin-top: 26em;
 }
 
 .slide-12 {
     background-image: url('img/collection-mobile.jpg');
-    justify-content: center;
 }
 
 .slide-13 {
@@ -418,12 +416,11 @@ li::before {
 }
 
 .slide-13 p {
-    margin-top: 30em;
+    margin-top: 22em;
 }
 
 .slide-14 {
     background-image: url('img/kiosk-empty.jpg');
-    justify-content: center;
 }
 
 .slide-14 p {
@@ -432,7 +429,6 @@ li::before {
 
 .slide-15 {
     background-image: url('img/kiosk-empty.jpg');
-    justify-content: center;
 }
 
 .slide-15 p {
@@ -443,22 +439,6 @@ li::before {
 .swiper-button-next,
 .swiper-button-prev {
     color: #fff;
-    margin-top: 0;
-    top: 0;
-    height: 100%;
-    padding: 0.75em;
-}
-
-.swiper-button-prev {
-    left: 0;
-    width: 33.5%;
-    justify-content: flex-start;
-}
-
-.swiper-button-next {
-    right: 0;
-    width: 66.5%;
-    justify-content: flex-end;
 }
 
 .swiper-pagination {
@@ -573,12 +553,12 @@ form #status-message {
 @media only screen and (min-width: 640px) {
     body {
         font-size: 0.833333vw;
-        min-height: 56.25vw;
         overflow-y: auto;
     }
 
     .container {
-        height: 56.25vw;
+        min-height: 48vw;
+        max-height: 56.25vw;
     }
 
     .slide-2 p {
@@ -589,13 +569,10 @@ form #status-message {
         margin-top: 2em;
     }
 
-    .slide-4 {
-        align-items: flex-start;
-    }
-
     .slide-4 p {
         margin-top: 7em;
-        margin-left: 4em;
+        margin-bottom: 17em;
+        margin-right: 30em;
     }
 
     .slide-5 li {
@@ -603,11 +580,12 @@ form #status-message {
     }
 
     .slide-6 p {
-        margin-top: 2em;
+        margin-top: 3em;
     }
 
     .slide-6 ul {
-        margin-top: 21em;
+        margin-top: 18em;
+        margin-bottom: 2em;
     }
 
     .slide-6 li {
@@ -615,22 +593,23 @@ form #status-message {
     }
 
     .slide-7 p {
-        margin-top: 1em;
+        margin-bottom: 23em;
         width: 33em;
     }
 
     .slide-8 p {
-        margin-top: 1.5em;
+        margin-bottom: 23em;
         max-width: 38.5em;
     }
 
     .slide-9 p {
-        margin-top: 1em;
+        margin-top: 0em;
         max-width: 38em;
     }
 
     .slide-9 ul {
-        margin-top: 21em;
+        margin-top: 16em;
+        margin-bottom: 3em;
     }
 
     .slide-9 li {
@@ -638,11 +617,11 @@ form #status-message {
     }
 
     .slide-10 p {
-        margin-top: 26em;
+        margin-top: 21em;
     }
 
     .slide-11 p {
-        margin-top: 26em;
+        margin-top: 21em;
     }
 
     .slide-12 {
@@ -658,14 +637,17 @@ form #status-message {
     }
 
     .slide-13 p {
-        margin-top: 26em;
+        margin-top: 21em;
     }
 
     .swiper-pagination {
         display: block;
     }
 
-    .btn-feedback,
+    .btn-feedback {
+        font-size: 0.75em;
+    }
+
     .form-feedback {
         font-size: 0.5em;
     }

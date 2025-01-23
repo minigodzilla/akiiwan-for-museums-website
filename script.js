@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const feedbackForm = document.querySelector('#form-feedback');
+    const feedbackBtns = document.querySelector('.btn-feedback');
     const feedbackBtn = document.querySelector('#btn-feedback');
     const formBackdrop = document.querySelector('#form-backdrop');
     const feedbackCloseBtn = document.querySelector('#btn-close');
@@ -45,7 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    feedbackBtn.addEventListener('click', () => feedbackFormHandler(true));
+    // for each feedbackBtns, add a click event listener to open the feedback form
+
+    feedbackBtns.array.forEach((btn) => {
+        btn.addEventListener('click', () => feedbackFormHandler(true));
+    });
+
     formBackdrop.addEventListener('click', () => feedbackFormHandler(false));
     feedbackCloseBtn.addEventListener('click', () => feedbackFormHandler(false));
 

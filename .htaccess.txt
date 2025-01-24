@@ -1,0 +1,14 @@
+<IfModule mod_headers.c>
+    # Disable caching for all file types
+    <FilesMatch "\.(html|htm|js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|otf|eot|json|xml)$">
+        Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# Disable ETag
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None

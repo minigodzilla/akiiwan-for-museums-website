@@ -435,6 +435,19 @@ li::before {
     margin-bottom: 3em;
 }
 
+.slide-16 {
+    background-image: url('img/kiosk-empty-cta.jpg');
+}
+
+.slide-16 p {
+    margin-bottom: 3em;
+    box-shadow: 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+.slide-16 p:nth-child(2) {
+    width: 18em;
+}
+
 /* swiper overrides */
 .swiper-button-next,
 .swiper-button-prev {
@@ -449,22 +462,25 @@ li::before {
     background-color: #fff;
 }
 
-#btn-feedback {
+.btn-feedback {
+    background-image: url('img/btn-feedback.png');
+    background-repeat: no-repeat;
+    background-size: 1em;
+    background-position: 0.6em 50%;
+    padding-left: 2.125em;
+    box-shadow: 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+#btn-feedback-bottom {
     position: absolute;
     z-index: 1;
     bottom: 1.25em;
     right: 1.25em;
-    background-image: url('img/btn-feedback.png');
-    background-repeat: no-repeat;
-    background-size: 1em;
-    background-position: 0.675em 50%;
-    padding-left: 2.125em;
-    box-shadow: 0.25em 0.25em rgba(0, 0, 0, 0.25);
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
-#btn-feedback.active {
+#btn-feedback-bottom.active {
     opacity: 1;
 }
 
@@ -640,16 +656,20 @@ form #status-message {
         margin-top: 21em;
     }
 
+    .slide-16 p:nth-child(2) {
+        width: 36em;
+    }
+
     .swiper-pagination {
         display: block;
     }
 
-    .btn-feedback {
+    #btn-feedback-bottom {
         font-size: 0.75em;
     }
 
     .form-feedback {
-        font-size: 0.5em;
+        font-size: 0.675em;
     }
 
     .form-feedback {

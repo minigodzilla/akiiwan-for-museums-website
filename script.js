@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const feedbackForm = document.querySelector('#form-feedback');
-    const feedbackBtns = document.querySelector('.btn-feedback');
-    const feedbackBtn = document.querySelector('#btn-feedback');
+    const feedbackBtns = document.querySelectorAll('.btn-feedback');
+    const feedbackBottomBtn = document.querySelector('#btn-feedback-bottom');
     const formBackdrop = document.querySelector('#form-backdrop');
     const feedbackCloseBtn = document.querySelector('#btn-close');
     let feedbackFormOpen = false;
@@ -13,16 +13,28 @@ document.addEventListener('DOMContentLoaded', () => {
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         on: {
             afterInit: (e) => e.slides[e.activeIndex].classList.add('swiper-slide-seen'),
-            slideChangeTransitionStart: (e) => feedbackBtn.classList.toggle('active', e.activeIndex >= 4),
+            slideChangeTransitionStart: (e) => feedbackBottomBtn.classList.toggle('active', e.activeIndex >= 4 && e.activeIndex != 15),
             slideChangeTransitionEnd: (e) => {
                 const activeSlide = e.slides[e.activeIndex];
                 activeSlide.classList.add('swiper-slide-seen');
+                if (activeSlide.classList.contains('slide-16')) morphHue();
                 // window.location.hash = activeSlide.id;
                 // const hash = `#${activeSlide.id}`;
                 // if (window.location.hash !== hash) window.history.replaceState(null, null, hash);
             },
         },
     });
+
+    // slowly morph the hue of the background image of .slide-16
+
+    const slide16 = document.querySelector('.slide-16');
+    let hue = 0;
+
+    const morphHue = () => {
+        hue = (hue + 0.25) % 360;
+        slide16.style.filter = `hue-rotate(${hue}deg)`;
+        requestAnimationFrame(morphHue);
+    };
 
     // map left/right arrow keys to prev/next slide
 
@@ -48,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // for each feedbackBtns, add a click event listener to open the feedback form
 
-    feedbackBtns.array.forEach((btn) => {
+    feedbackBtns.forEach((btn) => {
         btn.addEventListener('click', () => feedbackFormHandler(true));
     });
 

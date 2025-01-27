@@ -536,9 +536,15 @@ li::before {
     flex-direction: column;
 }
 
+form .field-shift {
+    position: absolute;
+    left: -9999px;
+}
+
 form label {
     font-weight: 600;
     margin-bottom: 0.5em;
+    user-select: none;
 }
 
 form input,
@@ -547,6 +553,41 @@ form textarea {
     border-radius: 0;
     margin-bottom: 1em;
     padding: 0.5em;
+}
+
+form input[type='checkbox'] {
+    display: none;
+}
+
+form input[type='checkbox'] + label {
+    position: relative;
+    padding-left: 2em;
+    cursor: pointer;
+    margin-bottom: 1em;
+}
+
+form input[type='checkbox'] + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    width: 1em;
+    height: 1em;
+    border: 2px solid var(--bg-color);
+}
+
+form input[type='checkbox'] + label::after {
+    content: '';
+    position: absolute;
+    left: 0.25em;
+    top: 0.5em;
+    width: 0.75em;
+    height: 0.75em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+form input[type='checkbox']:checked + label::after {
+    background-color: var(--bg-color);
 }
 
 form textarea {

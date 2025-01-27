@@ -115,15 +115,20 @@
         <div id="form-backdrop" class="form-backdrop"></div>
         <div id="form-feedback" class="form-feedback">
             <button id="btn-close"></button>
-            <!-- Jeremy: xnnjnjza | Steve: mgvovvgd -->
             <form id="feedback-form" action="https://formspree.io/f/xnnjnjza" method="POST" novalidate>
                 <h2>Feedback Form</h2>
+                <!-- real users should not fill this in and expect good things -->
+                <div class="field-shift" aria-label="Please leave the following field empty" aria-hidden="true">
+                    <input type="text" name="b_e7f83e702318920efe670e9b1_597f4b8abc" id="b_e7f83e702318920efe670e9b1_597f4b8abc" tabindex="-1" value="">
+                </div>
                 <label for="name">Name *</label>
                 <input type="text" id="name" name="name" autocomplete="name" required>
                 <label for="email">Email *</label>
                 <input type="email" id="email" name="email" autocomplete="email" required>
                 <label for="message">Message</label>
                 <textarea id="message" name="message" required></textarea>
+                <input type="checkbox" id="mailchimp-consent" name="mailchimp-consent" value="yes">
+                <label for="mailchimp-consent">I would like to receive updates from the Little Buffalo mailing list</label>
                 <button type="submit">Submit</button>
                 <div id="status-message">* required</div>
             </form>
